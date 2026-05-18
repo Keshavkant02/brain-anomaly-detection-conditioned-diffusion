@@ -82,6 +82,26 @@ Current aggregate over completed folds:
 
 These are the final 5-fold Behrendt et al.-adapted evaluation results for the current submitted model. Dice is oracle best Dice over a threshold sweep, not fixed-threshold deployment Dice.
 
+## Overview figures
+
+### Processing and evaluation pipeline
+
+![Processing and evaluation pipeline](docs/figures/01_processing_evaluation_pipeline.png)
+
+### Model architecture
+
+![Model architecture](docs/figures/02_model_architecture.png)
+
+### Dataset summary
+
+![Dataset summary](docs/figures/03_dataset_summary.png)
+
+### BraTS21 T2 performance comparison
+
+![BraTS21 T2 performance comparison](docs/figures/04_brats21_t2_performance_comparison.png)
+
+**Interpretation note:** The performance comparison is contextual, not a perfectly matched benchmark. Our model uses a 3D-context encoder extension and single `t_test = 500`; Behrendt et al.'s strongest cDDPM row uses SSL + ENS. Best possible Dice is threshold-sweep/oracle Dice, not fixed-threshold deployment Dice.
+
 ## Key Scripts
 
 Split creation:
