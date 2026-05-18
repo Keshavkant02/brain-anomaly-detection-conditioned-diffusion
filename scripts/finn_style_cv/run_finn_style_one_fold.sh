@@ -103,6 +103,7 @@ PYTHONPATH="$PWD:${PYTHONPATH:-}" python scripts/brats_eval/08_eval_brats_ddpm3d
   --slice-batch-size 10 \
   --save-figures 5 \
   --timesteps 500 \
+  --datamodule-config "configs/datamodule/Gold_700_finn_fold${FOLD}.yaml" \
   --postprocess-finn \
   --resume
 

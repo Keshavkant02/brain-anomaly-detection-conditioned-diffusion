@@ -209,6 +209,8 @@ def main():
     ap.add_argument("--timesteps", type=int, nargs="+", default=[500],
                     help="Use one value like 500, or ensemble values like 250 500 750.")
 
+    ap.add_argument("--datamodule-config", default="configs/datamodule/Gold_700_finn_fold0.yaml",
+                    help="Datamodule config used for preprocessing parameters such as imageDim/rescaleFactor.")
     ap.add_argument("--postprocess-finn", action="store_true",
                     help="Apply Finn-style median filtering, mask erosion, and connected-component filtering.")
 
@@ -263,7 +265,7 @@ def main():
     model.to(device)
     model.eval()
 
-    dm_yaml = OmegaConf.load("configs/datamodule/Gold_700_split.yaml")
+    dm_yaml = OmegaConf.load(args.datamodule_config)
     data_cfg = dm_yaml.cfg if "cfg" in dm_yaml else dm_yaml
 
     df = pd.read_csv(csv_path)

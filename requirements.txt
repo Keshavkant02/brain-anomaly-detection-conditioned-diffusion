@@ -1,0 +1,16 @@
+torch
+torchvision
+pytorch-lightning
+torchio
+monai
+omegaconf
+hydra-core
+numpy
+pandas
+scipy
+scikit-learn
+scikit-image
+matplotlib
+tqdm
+SimpleITK
+nibabel
