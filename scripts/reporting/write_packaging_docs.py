@@ -210,7 +210,7 @@ Main protocol:
 
 - healthy training data: Gold_700 T2 MRI
 - external pathological evaluation: BraTS21 T2 tumour scans
-- model: 3D Spark encoder + 2D conditioned DDPM
+- model: 3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining + 2D conditioned DDPM
 - evaluation: Finn-style post-processing, `t_test = 500`
 - metrics: AUPRC and oracle best Dice
 

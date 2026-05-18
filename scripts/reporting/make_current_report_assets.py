@@ -215,7 +215,7 @@ readme = f"""# 3D-Context Conditioned DDPM for T2 Brain MRI Anomaly Detection
 
 This repository contains a 3D-context extension/adaptation of a conditioned diffusion model framework for unsupervised anomaly detection in brain MRI.
 
-The model uses a **3D Spark encoder** to extract volumetric context from a full T2 volume and conditions a **2D DDPM reconstruction model**. Anomaly maps are generated from reconstruction residuals and evaluated on BraTS21 T2 tumour scans.
+The model uses a **3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining** to extract volumetric context from a full T2 volume and conditions a **2D DDPM reconstruction model**. Anomaly maps are generated from reconstruction residuals and evaluated on BraTS21 T2 tumour scans.
 
 ## Project Summary
 
@@ -227,14 +227,14 @@ The model uses a **3D Spark encoder** to extract volumetric context from a full 
 - External pathological evaluation: BraTS21 T2 tumour scans
 - Prepared BraTS21 cases: 1251
 - BraTS21 preprocessing QA: 0 errors over 1251 prepared cases
-- Model: 3D Spark encoder + 2D conditioned DDPM
+- Model: 3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining + 2D conditioned DDPM
 - Current completed Finn-style folds: {n_completed}/5
 
 ## Method Overview
 
 1. Curate healthy Gold_700 T2 volumes and standardize to the model space.
 2. Create Finn-style splits: fixed held-out healthy test set plus five train/validation fold CSVs.
-3. Pretrain a 3D Spark encoder on each fold's healthy training set.
+3. Pretrain a 3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining on each fold's healthy training set.
 4. Fine-tune a 2D conditioned DDPM using the pretrained 3D encoder context.
 5. Evaluate each fold's model on the fixed external BraTS21 T2 set.
 6. Report AUPRC and oracle best Dice using Finn-style post-processing.
