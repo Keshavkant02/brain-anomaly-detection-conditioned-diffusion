@@ -155,18 +155,20 @@ Reporting assets:
 
 ## Presentation Assets
 
-Generated assets are stored in:
+Final public-facing figures are stored in:
 
-- `docs/presentation_assets/`
+- `docs/figures/`
+
+Supporting CSV tables are stored in:
+
 - `docs/tables/`
 
 Useful figures include:
 
-- `docs/presentation_assets/current_fold_performance.png`
-- `docs/presentation_assets/gold700_finn_style_split_sizes.png`
-- `docs/presentation_assets/gold700_source_composition.png`
-- `docs/presentation_assets/gold700_sex_composition.png`
-- `docs/presentation_assets/brats21_tumour_voxel_distribution.png`
+- `docs/figures/01_processing_evaluation_pipeline.png`
+- `docs/figures/02_model_architecture.png`
+- `docs/figures/03_dataset_summary.png`
+- `docs/figures/04_brats21_t2_performance_comparison.png`
 
 ## Reproducibility and Audit
 
