@@ -1,0 +1,2 @@
+n_folds_completed,mean_auprc,std_auprc,mean_oracle_dice,std_oracle_dice,mean_auprc_percent,std_auprc_percent,mean_oracle_dice_percent,std_oracle_dice_percent
+5,0.5704514253490711,0.04845634607880265,0.6031479389272543,0.026427229539807476,57.045142534907114,4.845634607880265,60.314793892725426,2.6427229539807477

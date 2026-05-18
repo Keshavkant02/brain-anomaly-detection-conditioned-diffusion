@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv/
+venv/
+*.egg-info/
+
+# Hydra/logs/checkpoints
+logs/
+outputs/
+multirun/
+wandb/
+lightning_logs/
+checkpoints/
+<path_to_logs>/
+
+# Large medical imaging data
+Data/preprocessed/
+Data/raw_fomo/
+Data/brats21_raw/
+Data/Test/Brats21/t2/
+Data/Test/Brats21/seg/
+Data/Test/Brats21/mask/
+*.nii
+*.nii.gz
+*.tar
+*.zip
+
+# Large model files
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+
+# OS/editor
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Local scratch / accidental logs
+train_log.txt
+fold0_clean_pipeline_*.log
+Log
+LARGE_FILES.txt
+GIT_HISTORY.txt
+GIT_STATUS.txt
+REPO_TREE.txt
+CURRENT_GITIGNORE.txt
+
+# Local large artifacts / medical imaging data
+docs/run_notes/*.log

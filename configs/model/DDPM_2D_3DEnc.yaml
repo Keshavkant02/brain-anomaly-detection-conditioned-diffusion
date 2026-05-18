@@ -1,0 +1,56 @@
+_target_: src.models.DDPM_2D_3DEnc.DDPM_2D_3DEnc
+
+cfg:
+  name: DDPM_2D_3DEnc
+  spatialDims: 2D
+
+  # 3D encoder
+  encoder_path: ???
+  cond_dim: 128
+  freeze_encoder: false
+
+  # Data
+  imageDim: [96, 96]
+  rescaleFactor: 1
+  interRes: null
+  cropMode: null
+  resizedEvaluation: false
+  mode: t2
+
+  # UNet architecture
+  unet_dim: 128
+  dim_mults: [1, 2, 2]
+  num_res_blocks: 3
+  att_res: [3, 6, 12]
+  dropout_unet: 0.0
+  conv_resample: true
+  spatial_transformer: false
+
+  # Conditioning / noise
+  condition: true
+  noisetype: simplex
+
+  # Diffusion
+  timesteps: 1000
+  sampling_timesteps: 1000
+  test_timesteps: 500
+  objective: pred_x0
+  loss: l1
+  lossStrategy: mean
+
+  # Training
+  lr: 1.0e-4
+  weight_decay: 0.05
+  scheduleLR: false
+  patienceLR: 10
+  earlyStopping: false
+  patienceStopping: 50
+
+  # Evaluation/postprocessing
+  saveOutputImages: false
+  evalSeg: true
+  pad: false
+  erodeBrainmask: true
+  medianFiltering: true
+  threshold: auto
+  use_postprocessed_score: true

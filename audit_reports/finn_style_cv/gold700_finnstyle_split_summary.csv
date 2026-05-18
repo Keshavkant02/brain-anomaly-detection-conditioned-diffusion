@@ -1,0 +1,6 @@
+fold,train_rows,val_rows,test_rows,overlap_train_val,overlap_train_test,overlap_val_test,train_csv,val_csv,test_csv
+0,442,54,195,0,0,0,Data/splits/finn_style/Gold700_finnstyle_train_fold0.csv,Data/splits/finn_style/Gold700_finnstyle_val_fold0.csv,Data/splits/finn_style/Gold700_finnstyle_test.csv
+1,442,54,195,0,0,0,Data/splits/finn_style/Gold700_finnstyle_train_fold1.csv,Data/splits/finn_style/Gold700_finnstyle_val_fold1.csv,Data/splits/finn_style/Gold700_finnstyle_test.csv
+2,442,54,195,0,0,0,Data/splits/finn_style/Gold700_finnstyle_train_fold2.csv,Data/splits/finn_style/Gold700_finnstyle_val_fold2.csv,Data/splits/finn_style/Gold700_finnstyle_test.csv
+3,442,54,195,0,0,0,Data/splits/finn_style/Gold700_finnstyle_train_fold3.csv,Data/splits/finn_style/Gold700_finnstyle_val_fold3.csv,Data/splits/finn_style/Gold700_finnstyle_test.csv
+4,442,54,195,0,0,0,Data/splits/finn_style/Gold700_finnstyle_train_fold4.csv,Data/splits/finn_style/Gold700_finnstyle_val_fold4.csv,Data/splits/finn_style/Gold700_finnstyle_test.csv

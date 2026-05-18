@@ -1,0 +1,30 @@
+# configs/model/Spark_3D.yaml
+_target_: src.models.Spark_3D.Spark_3D
+
+cfg:
+  name: Spark_3D
+  spatial_dims: 3
+  n_input_channels: 1
+  latent_dim: 512
+  mask_ratio: 0.65
+  patch_size: [8, 8, 5]
+  
+  # --- The Missing Keys ---
+  lossStrategy: mean   # This clears the current error
+  loss: "l1"                 # Matches the 'l1' seen in your config dump
+  objective: "pred_x0"
+  
+  # --- Architecture Settings ---
+  unet_dim: 128
+  dim_mults: [1, 2, 2]
+  OpenaiUnet: true
+  conv_resample: true
+  noisetype: "simplex"
+  dropout_unet: 0.0
+  residualmode: "l1"
+  condition: false
+  
+  # --- Optimizer & Diffusion Settings ---
+  lr: 1e-4
+  weight_decay: 0.05
+  test_timesteps: 500

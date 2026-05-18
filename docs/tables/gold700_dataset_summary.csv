@@ -1,0 +1,5 @@
+item,value
+unique_gold700_scans,691
+fold_train_rows_each,442
+fold_val_rows_each,54
+fixed_healthy_test_rows,195

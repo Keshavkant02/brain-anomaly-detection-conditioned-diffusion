@@ -1,0 +1,20 @@
+_target_: src.datamodules.create_dataset.GoldDataModule
+csv: Data/splits/finn_style/Gold700_finnstyle_train_fold1.csv
+csv_val: Data/splits/finn_style/Gold700_finnstyle_val_fold1.csv
+cfg:
+  name: Gold_700_finn_fold1
+  spatialDims: 3D
+  imageDim:
+  - 96
+  - 96
+  - 50
+  rescaleFactor: 1
+  perc_low: 0.5
+  perc_high: 99.5
+  preload: true
+  batch_size: 8
+  num_workers: 8
+  unisotropic_sampling: true
+  resizedEvaluation: false
+  mode: t2
+  aug_intensity: true
