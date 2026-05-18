@@ -35,7 +35,7 @@ Important fixes:
 - avoids Hydra path parsing issues using `/tmp` checkpoint symlinks
 - uses `PYTHONPATH="$PWD:${PYTHONPATH:-}"` for BraTS eval import stability
 
-### `scripts/brats_eval/08_eval_brats_ddpm3denc_Behrendt-et-al-adapted.py`
+### `scripts/brats_eval/08_eval_brats_ddpm3denc_finnstyle.py`
 
 Evaluates trained DDPM_2D_3DEnc checkpoints on prepared BraTS21 T2 cases.
 

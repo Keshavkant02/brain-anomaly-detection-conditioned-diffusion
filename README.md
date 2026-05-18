@@ -184,7 +184,6 @@ Audit reports and run notes are stored under:
 - BraTS21 preprocessing was matched to the Gold_700/model-space pipeline and is not guaranteed to be identical to Finn et al.'s preprocessing.
 - Dice is best possible Dice over threshold sweep.
 - Final claims should use the completed fold aggregate, not a single fold.
-- The current README may be regenerated as new folds finish.
 
 
 Additional note: This project focuses on BraTS21 tumour anomaly segmentation using AUPRC and oracle/best-threshold Dice. Healthy reconstruction-quality metrics such as SSIM, PSNR, and LPIPS, which are reported by Behrendt et al. for reconstruction analysis, were not included in the final reported results and are left for future extension.

@@ -354,7 +354,6 @@ Audit reports and run notes are stored under:
 - BraTS21 preprocessing was matched to the Gold_700/model-space pipeline and is not guaranteed to be identical to Finn et al.'s preprocessing.
 - Dice is oracle best Dice over threshold sweep.
 - Final claims should use the completed fold aggregate, not a single fold.
-- The current README may be regenerated as new folds finish.
 """
 
 (ROOT / "README.md").write_text(readme)
