@@ -19,12 +19,31 @@ The model uses a **3D MONAI ResNet-50 encoder with SparK-style masked reconstruc
 
 ## Method Overview
 
-1. Curate healthy Gold_700 T2 volumes and standardize to the model space.
-2. Create Behrendt et al.-adapted splits: fixed held-out healthy test set plus five train/validation fold CSVs.
-3. Pretrain a 3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining on each fold's healthy training set.
-4. Fine-tune a 2D conditioned DDPM using the pretrained 3D encoder context.
-5. Evaluate each fold's model on the fixed external BraTS21 T2 set.
-6. Report AUPRC and oracle best Dice using Behrendt et al.-adapted post-processing.
+This project follows a Behrendt et al.-adapted unsupervised anomaly detection workflow for T2-weighted brain MRI, with a 3D-context extension to the conditioned DDPM framework.
+
+1. **Healthy cohort construction**  
+   We use the curated Gold_700 healthy T2 MRI cohort as the normal/anomaly-free training distribution. The final usable cohort contains 691 scans.
+
+2. **Model-space standardization**  
+   Healthy scans are pre-processed and standardized into the common model-space tensor geometry. Prepared model inputs use a final tensor size of `96 × 96 × 50`.
+
+3. **Behrendt et al.-adapted data splitting**  
+   We create five repeated train/validation folds while keeping a fixed healthy test set held out from training and validation. Each fold uses 442 training scans and 54 validation scans, with 195 fixed healthy test scans. Train/validation/test overlap is zero.
+
+4. **Stage 1: 3D context encoder pretraining**  
+   For each fold, a 3D MONAI ResNet-50 encoder is pretrained on healthy T2 volumes using SparK-style masked reconstruction pretraining. This stage learns volumetric anatomical context from healthy data.
+
+5. **Stage 2: 3D-context conditioned DDPM training**  
+   The pretrained 3D encoder summarizes the full T2 volume into a context representation. This context conditions a 2D DDPM U-Net that reconstructs input slices as pseudo-healthy anatomy.
+
+6. **External pathological evaluation on BraTS21 T2**  
+   BraTS21 T2 tumour cases are not used for training or validation. They are prepared into the same model-space geometry and used only for external pathological evaluation.
+
+7. **Residual anomaly mapping and post-processing**  
+   At inference, anomaly evidence is computed from the reconstruction residual map, `R = |input − reconstruction|`. We apply Behrendt et al.-adapted residual-map post-processing: median filtering, brain-mask erosion, and connected-component filtering.
+
+8. **Metrics**  
+   We report AUPRC and best possible Dice. Best possible Dice is computed from a threshold sweep over residual anomaly maps and should be interpreted as an oracle/best-threshold localization metric, not fixed-threshold deployment Dice.
 
 ## Data Splits
 
@@ -59,15 +78,15 @@ Evaluation uses:
   - small connected-component filtering
 - metrics:
   - AUPRC
-  - oracle best Dice over threshold sweep
+  - best possible Dice over threshold sweep
 
-Dice is **oracle best Dice**, not fixed-threshold deployment Dice.
+Dice is **best possible Dice**, not fixed-threshold deployment Dice.
 
 ## Current Results
 
 Current completed folds: **5/5**
 
-| Fold | Status | BraTS cases ok | Mean AUPRC | Mean oracle Dice |
+| Fold | Status | BraTS cases ok | Mean AUPRC | Mean best possible Dice |
 |---:|---|---:|---:|---:|
 | 0 | complete | 1251/1251 | 60.42% | 61.59% |
 | 1 | complete | 1251/1251 | 59.21% | 62.34% |
@@ -78,9 +97,9 @@ Current completed folds: **5/5**
 Current aggregate over completed folds:
 
 - Mean AUPRC: **57.05% ± 4.85%**
-- Mean oracle Dice: **60.31% ± 2.64%**
+- Mean best possible Dice: **60.31% ± 2.64%**
 
-These are the final 5-fold Behrendt et al.-adapted evaluation results for the current submitted model. Dice is oracle best Dice over a threshold sweep, not fixed-threshold deployment Dice.
+These are the final 5-fold Behrendt et al.-adapted evaluation results for the current submitted model. Dice is best possible Dice over a threshold sweep, not fixed-threshold deployment Dice.
 
 ## Overview figures
 
@@ -118,7 +137,7 @@ Result aggregation:
 
 BraTS evaluation:
 
-- `scripts/brats_eval/08_eval_brats_ddpm3denc_Behrendt-et-al-adapted.py`
+- `scripts/brats_eval/08_eval_brats_ddpm3denc_finnstyle.py`
 
 Reporting assets:
 
@@ -163,7 +182,7 @@ Audit reports and run notes are stored under:
 - This is a 3D-encoder extension/adaptation, not an exact reproduction of the original cDDPM implementation.
 - Gold_700 replaces IXI as the healthy training cohort.
 - BraTS21 preprocessing was matched to the Gold_700/model-space pipeline and is not guaranteed to be identical to Finn et al.'s preprocessing.
-- Dice is oracle best Dice over threshold sweep.
+- Dice is best possible Dice over threshold sweep.
 - Final claims should use the completed fold aggregate, not a single fold.
 - The current README may be regenerated as new folds finish.
 
