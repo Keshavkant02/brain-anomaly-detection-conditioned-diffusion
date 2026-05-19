@@ -24,8 +24,8 @@ Main protocol:
 - external pathological evaluation: BraTS21 T2 tumour scans
 - model: 3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining + 2D conditioned DDPM
 - evaluation: Behrendt et al.-adapted post-processing, `t_test = 500`
-- metrics: AUPRC and oracle best Dice
+- metrics: AUPRC and best possible Dice
 
 Important reporting rule:
 
-Dice is oracle best Dice over a threshold sweep. Do not describe it as fixed-threshold deployment Dice.
+Dice is best possible Dice over a threshold sweep. Do not describe it as fixed-threshold deployment Dice.

@@ -237,7 +237,7 @@ The model uses a **3D MONAI ResNet-50 encoder with SparK-style masked reconstruc
 3. Pretrain a 3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining on each fold's healthy training set.
 4. Fine-tune a 2D conditioned DDPM using the pretrained 3D encoder context.
 5. Evaluate each fold's model on the fixed external BraTS21 T2 set.
-6. Report AUPRC and oracle best Dice using Finn-style post-processing.
+6. Report AUPRC and best possible Dice using Finn-style post-processing.
 
 ## Data Splits
 
@@ -272,9 +272,9 @@ Evaluation uses:
   - small connected-component filtering
 - metrics:
   - AUPRC
-  - oracle best Dice over threshold sweep
+  - best possible Dice over threshold sweep
 
-Dice is **oracle best Dice**, not fixed-threshold deployment Dice.
+Dice is **best possible Dice**, not fixed-threshold deployment Dice.
 
 ## Current Results
 
@@ -352,7 +352,7 @@ Audit reports and run notes are stored under:
 - This is a 3D-encoder extension/adaptation, not an exact reproduction of the original cDDPM implementation.
 - Gold_700 replaces IXI as the healthy training cohort.
 - BraTS21 preprocessing was matched to the Gold_700/model-space pipeline and is not guaranteed to be identical to Finn et al.'s preprocessing.
-- Dice is oracle best Dice over threshold sweep.
+- Dice is best possible Dice over threshold sweep.
 - Final claims should use the completed fold aggregate, not a single fold.
 """
 

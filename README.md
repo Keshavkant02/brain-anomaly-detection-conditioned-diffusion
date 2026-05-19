@@ -121,6 +121,17 @@ These are the final 5-fold Behrendt et al.-adapted evaluation results for the cu
 
 **Interpretation note:** The performance comparison is contextual, not a perfectly matched benchmark. Our model uses a 3D-context encoder extension and single `t_test = 500`; Behrendt et al.'s strongest cDDPM row uses SSL + ENS. Best possible Dice is threshold-sweep/oracle Dice, not fixed-threshold deployment Dice.
 
+## Final Model Implementation
+
+The submitted workflow uses:
+
+- `src/models/Spark_3D.py` for fold-specific 3D encoder pretraining.
+- `src/models/DDPM_2D_3DEnc.py` for the final 3D-context conditioned 2D DDPM.
+- `src/models/modules/cond_DDPM.py` and `src/models/modules/OpenAI_Unet.py` for the conditioned diffusion backbone.
+- `src/models/modules/spark/Spark_3D.py` and `src/models/modules/spark/decoder_3d.py` for the 3D SparK-style encoder module.
+
+Legacy 2D baseline DDPM/SparK files are not part of the final submitted workflow.
+
 ## Key Scripts
 
 Split creation:
@@ -181,6 +192,7 @@ Audit reports and run notes are stored under:
 
 ## Limitations
 
+- Non-mask MRI volumes are read through a SimpleITK reader that applies CurvatureFlow smoothing; this should be treated as part of the preprocessing/data-loading pipeline and made configurable in future work.
 - This is a 3D-encoder extension/adaptation, not an exact reproduction of the original cDDPM implementation.
 - Gold_700 replaces IXI as the healthy training cohort.
 - BraTS21 preprocessing was matched to the Gold_700/model-space pipeline and is not guaranteed to be identical to Finn et al.'s preprocessing.

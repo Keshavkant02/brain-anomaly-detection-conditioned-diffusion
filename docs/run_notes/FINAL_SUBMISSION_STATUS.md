@@ -26,7 +26,7 @@ All five Behrendt et al.-adapted folds completed successfully.
 
 Across five Behrendt et al.-adapted folds, the 3D-context conditioned DDPM achieved 57.05% ± 4.85% AUPRC and 60.31% ± 2.64% oracle Dice on 1251 BraTS21 T2 tumour cases, with zero failed evaluations.
 
-Dice is oracle best Dice over a threshold sweep, not fixed-threshold deployment Dice.
+Dice is best possible Dice over a threshold sweep, not fixed-threshold deployment Dice.
 
 ## Next packaging steps
 

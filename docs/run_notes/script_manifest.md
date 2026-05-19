@@ -44,7 +44,7 @@ Evaluation settings:
 - `t_test = 500`
 - residual score: `|input - reconstruction|`
 - AUPRC over evaluation mask
-- oracle best Dice over threshold sweep
+- best possible Dice over threshold sweep
 - Behrendt et al.-adapted post-processing:
   - median filtering
   - brain-mask erosion

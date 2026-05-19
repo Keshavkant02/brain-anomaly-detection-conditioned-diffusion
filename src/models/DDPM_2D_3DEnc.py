@@ -7,7 +7,7 @@ Stage 2 model:
 - encoder produces 128-d conditioning vector from full 3D MRI volume
 - DDPM reconstructs 2D slices conditioned on 3D anatomical context
 
-This file is intentionally separate from DDPM_2D.py so Finn's original file
+This file implements the final 3D-context conditioned DDPM workflow
 remains untouched.
 """
 

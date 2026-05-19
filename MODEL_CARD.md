@@ -79,9 +79,9 @@
 
 ---
 
-## Comparison to Reference (Behrendt et al. 2025 Spark_2D)
+## Reference Context
 
-| | Behrendt's Spark_2D | This Spark_3D |
+| | reference 2D SparK-style encoder | This Spark_3D |
 |---|---|---|
 | Backbone | ResNet50 (sparse 2D) | ResNet50 (dense 3D) |
 | Convolutions | SparseConv2d | Standard Conv3d |
@@ -159,7 +159,7 @@ from src.models.modules.spark.Spark_3D import ResNet50_3D_Backbone
 ckpt = torch.load('epoch-1480_step-256213_loss-0.00_fold-1.ckpt', map_location='cpu')
 encoder = ResNet50_3D_Backbone()
 encoder.load_state_dict(ckpt['encoder_state_dict'], strict=True)
-# Encoder ready for joint fine-tuning with DDPM_2D
+# Encoder ready for joint fine-tuning with DDPM_2D_3DEnc
 ```
 
 The encoder checkpoint is loaded into the compatible `ResNet50_3D_Backbone` module before DDPM fine-tuning.
@@ -170,11 +170,11 @@ The encoder checkpoint is loaded into the compatible `ResNet50_3D_Backbone` modu
 
 ```bash
 python run.py model=DDPM_2D_3DEnc datamodule=Gold_700 logger=csv \
-  model.cfg.encoder_path=./<path_to_logs>/logs/runs/DDPM_2D/Spark_3D_Gold_700_DDPM_2D_datamodule-Gold_700_logger-csv_model-Spark_3D_test_after_training-False_2026-05-04_16-19-52/checkpoints/epoch-1480_step-256213_loss-0.00_fold-1.ckpt \
+  model.cfg.encoder_path=<fold_specific_Spark_3D_checkpoint> \
   test_after_training=False
 ```
 
-The DDPM_2D module loads `encoder_state_dict` directly — no preprocessing required.
+The DDPM_2D_3DEnc module loads `encoder_state_dict` directly — no preprocessing required.
 
 ---
 

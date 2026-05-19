@@ -126,7 +126,7 @@ Evaluation settings:
 - `t_test = 500`
 - residual score: `|input - reconstruction|`
 - AUPRC over evaluation mask
-- oracle best Dice over threshold sweep
+- best possible Dice over threshold sweep
 - Finn-style post-processing:
   - median filtering
   - brain-mask erosion
@@ -212,11 +212,11 @@ Main protocol:
 - external pathological evaluation: BraTS21 T2 tumour scans
 - model: 3D MONAI ResNet-50 encoder with SparK-style masked reconstruction pretraining + 2D conditioned DDPM
 - evaluation: Finn-style post-processing, `t_test = 500`
-- metrics: AUPRC and oracle best Dice
+- metrics: AUPRC and best possible Dice
 
 Important reporting rule:
 
-Dice is oracle best Dice over a threshold sweep. Do not describe it as fixed-threshold deployment Dice.
+Dice is best possible Dice over a threshold sweep. Do not describe it as fixed-threshold deployment Dice.
 """).strip() + "\n"
 
 files = {
