@@ -15,6 +15,7 @@ test -f "$TRAIN_REL" || { echo "Missing $TRAIN_REL"; exit 1; }
 test -f "$VAL_REL" || { echo "Missing $VAL_REL"; exit 1; }
 test -f "$TEST_REL" || { echo "Missing $TEST_REL"; exit 1; }
 
+# Historical Lightning log root inherited from the original framework; final model override is DDPM_2D_3DEnc below.
 LOG_ROOT="./<path_to_logs>/logs/runs/DDPM_2D"
 TMP_DIR="/tmp/cddpm_finn/fold${FOLD}"
 ENCODER_LINK="${TMP_DIR}/encoder_best.ckpt"

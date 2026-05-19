@@ -4,8 +4,8 @@
 defaults:
   - _self_
   - trainer: default.yaml
-  - model: DDPM_2D_3DEnc_3DEnc.yaml
-  - datamodule: IXI.yaml
+  - model: DDPM_2D_3DEnc.yaml
+  - datamodule: Gold_700_finn_fold0.yaml
   - callbacks: 
     - checkpoint.yaml # set this to null if you don't want to use callbacks
 

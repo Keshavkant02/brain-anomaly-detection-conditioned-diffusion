@@ -14,3 +14,6 @@ matplotlib
 tqdm
 SimpleITK
 nibabel
+einops
+Pillow
+timm

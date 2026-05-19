@@ -49,12 +49,12 @@ This project follows a Behrendt et al.-adapted unsupervised anomaly detection wo
 
 Behrendt et al.-adapted split files:
 
-- `Data/splits/finn_style/Gold700_Behrendt-et-al-adapted_train_fold0.csv`
-- `Data/splits/finn_style/Gold700_Behrendt-et-al-adapted_val_fold0.csv`
+- `Data/splits/finn_style/Gold700_finnstyle_train_fold0.csv`
+- `Data/splits/finn_style/Gold700_finnstyle_val_fold0.csv`
 - ...
-- `Data/splits/finn_style/Gold700_Behrendt-et-al-adapted_train_fold4.csv`
-- `Data/splits/finn_style/Gold700_Behrendt-et-al-adapted_val_fold4.csv`
-- `Data/splits/finn_style/Gold700_Behrendt-et-al-adapted_test.csv`
+- `Data/splits/finn_style/Gold700_finnstyle_train_fold4.csv`
+- `Data/splits/finn_style/Gold700_finnstyle_val_fold4.csv`
+- `Data/splits/finn_style/Gold700_finnstyle_test.csv`
 
 Important: the fixed healthy test set is not used for model training or validation.
 
@@ -200,4 +200,4 @@ Audit reports and run notes are stored under:
 - Final claims should use the completed fold aggregate, not a single fold.
 
 
-Additional note: This project focuses on BraTS21 tumour anomaly segmentation using AUPRC and oracle/best-threshold Dice. Healthy reconstruction-quality metrics such as SSIM, PSNR, and LPIPS, which are reported by Behrendt et al. for reconstruction analysis, were not included in the final reported results and are left for future extension.
+Additional note: This project focuses on BraTS21 tumour anomaly segmentation using AUPRC and best possible / best-threshold Dice. Healthy reconstruction-quality metrics such as SSIM, PSNR, and LPIPS, which are reported by Behrendt et al. for reconstruction analysis, were not included in the final reported results and are left for future extension.
